@@ -15,8 +15,6 @@ public class C1 {
     System.out.println("Cuantos vendedores tiene la empresa?");
     vendedores = in.nextInt();
     
-   
-
     for(int i = 0 ; i<vendedores ; i++){
       System.out.println("Cuantos productos le fueron asignados al vendedor numero " + (i + 1) + "?");
       cantidadAsignada = in.nextInt();

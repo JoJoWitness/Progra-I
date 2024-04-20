@@ -4,14 +4,9 @@ import java.util.Scanner;
 
 public class C2 {
   public static void main(String[] args) {
-    String nombre;
-    String nombreGanador = "Nadie";
-    int area, pendiente, precio;
-    int ofertas;
-    float distancia;
-    float distanciaGanador = 0;
-    int areaGanador = 0, pendienteGanador = 0;
-    int precioGanador = 100000000;
+    String nombre, nombreGanador = "Nadie";
+    int area, pendiente, precio, ofertas, areaGanador = 0, pendienteGanador = 0, precioGanador = 100000000;
+    float distancia, distanciaGanador = 0;
 
     Scanner in = new Scanner(System.in);
     
@@ -48,8 +43,5 @@ public class C2 {
     System.out.println("La propiedad esta a: " + distanciaGanador + " kilometros del centro de la ciudad.");
     System.out.println("La pendiente de la propiedad es de: " + pendienteGanador + "%.");
     System.out.println("El precio de la propiedad es de: " + precioGanador + " bolivares.");
-
-
   }
-
 }
