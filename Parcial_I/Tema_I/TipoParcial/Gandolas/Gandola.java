@@ -55,4 +55,12 @@ public class Gandola extends Vehiculo{
   public void setValorDeLaCarga(long valorDeLaCarga) {
     this.valorDeLaCarga = valorDeLaCarga;
   }
+
+  public String getOrigen() {
+    return origen;
+  }
+
+  public void setOrigen(String origen) {
+    this.origen = origen;
+  }
 }

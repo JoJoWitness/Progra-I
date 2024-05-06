@@ -8,15 +8,20 @@ import Parcial_I.Tema_I.TipoParcial.Gandolas.GandolaNacional;
 
 public class Main {
 
-    public int cargarDatos(int n){
-      String matricula, tipoDeMercancia, origen, poliza, direccion, responsableDeLaMercancia;
-      long pesoDeLaCarga, valorDeLaCarga;
-      int arrayBandera;
+    
+    public static int cargarDatos(Gandola gandolasRegistradas[], int n){
+      
+      int arrayBandera = 0, bandera;
+
+      String matricula, tipoDeMercancia, origen, poliza, direccion, responsableDeLaMercancia, pesoDeLaCargaString, valorDeLaCargaString, banderaString;
+      long pesoDeLaCarga, valorDeLaCarga; 
 
       Scanner entrada = new Scanner(System.in);
 
       for(int i = 0; i <n; i++){
 
+        
+        System.out.println("");
         System.out.println("Cual es la matricula del vehiculo?");
         matricula = entrada.nextLine();
         System.out.println("Cual es el tipo de Mercancia?");
@@ -28,15 +33,19 @@ public class Main {
           System.out.println("Por favor, ingrese un valor correcto.");
         }
         System.out.println("Ingrese el peso en toneladas de la carga");
-        pesoDeLaCarga = entrada.nextLong();
+        pesoDeLaCargaString = entrada.nextLine();
+        pesoDeLaCarga = Long.parseLong(pesoDeLaCargaString);
         System.out.println("Ingrese el valor de la carga en bolivares");
-        valorDeLaCarga = entrada.nextLong()
+        valorDeLaCargaString = entrada.nextLine();
+        valorDeLaCarga = Long.parseLong(valorDeLaCargaString);
         System.out.println("Ingrese el pais de origen de la carga");
+       
         while(true){
           origen = entrada.nextLine();
           if(origen.equalsIgnoreCase("V") || origen.equalsIgnoreCase("E")){
             break;
           }
+          
           System.out.println("Por favor, ingrese un valor correcto.");
         }
 
@@ -57,30 +66,105 @@ public class Main {
 
         System.out.println("Desea ingresar otra gandola?");
         System.out.println("Ingrese 1 para continuar, si desea salir, ingrese cualquier otro numero.");
-        bandera = entrada.nextInt();
+        banderaString = entrada.nextLine();
+        bandera = Integer.parseInt(banderaString);
         if (bandera != 1){
-          arrayBandera = i;
+          arrayBandera = i + 1;
           break;
         }
+    }  
+  
+      
+      return arrayBandera;
     }
 
-      entrada.close();
-    return arrayBandera;
+    public static void mostrarDatosDeGandolasExtranjeras(Gandola gandolasRegistradas[], int arrayBandera){
+
+      int valorTotalDeLaMercanciaQueIngresa = 0;
+      System.out.println("");
+      System.out.println("Matricula     Peso(Toneladas)     Tipo de mercancia");
+      for(int i = 0; i<arrayBandera; i++){
+        if(gandolasRegistradas[i].getOrigen().equalsIgnoreCase("E")){
+          System.out.println(gandolasRegistradas[i].getMatricula() + "     " + gandolasRegistradas[i].getPesoDeLaCarga() + "     " + gandolasRegistradas[i].getTipoDeMercancia());
+          valorTotalDeLaMercanciaQueIngresa += gandolasRegistradas[i].getValorDeLaCarga();
+        }
+      }
+      System.out.println("El valor total de la mercancia que ingresa al pais es de: " + valorTotalDeLaMercanciaQueIngresa + "bs");
+      System.out.println("");
+    }
+
+    public static void pesoPromedioDeLasGandolas(Gandola gandolasRegistradas[], int arrayBandera){
+      long promedioDePesoDeGandolasNacionales, promedioDePesoDeGandolasExtranjeras;
+      int sumatoriaDePesoDeGandolasNacionales =0, cantidaDeGandolasNacionales = 0, sumatoriaDePesoDeGandolasExtranjeras = 0, cantidaDeGandolasExtranjeras = 0;
+      
+      for(int i = 0; i<arrayBandera; i++){
+        if(gandolasRegistradas[i].getOrigen().equalsIgnoreCase("V")){
+          cantidaDeGandolasNacionales++;
+          sumatoriaDePesoDeGandolasNacionales += gandolasRegistradas[i].getPesoDeLaCarga();
+        }
+        else{
+          cantidaDeGandolasExtranjeras++;
+          sumatoriaDePesoDeGandolasExtranjeras += gandolasRegistradas[i].getPesoDeLaCarga();
+  
+        }
+      }
+
+      promedioDePesoDeGandolasNacionales = sumatoriaDePesoDeGandolasNacionales/cantidaDeGandolasNacionales;
+      promedioDePesoDeGandolasExtranjeras = sumatoriaDePesoDeGandolasExtranjeras/cantidaDeGandolasExtranjeras;
+  
+      if(promedioDePesoDeGandolasExtranjeras > promedioDePesoDeGandolasNacionales){
+        System.out.println("Esta ingresando mas mercancia en promedio a Venezuela");
+      }
+      else if(promedioDePesoDeGandolasExtranjeras < promedioDePesoDeGandolasNacionales){
+        System.out.println("Esta ingresando mas mercancia en promedio a Colombia");
+      }
+      else{
+        System.out.println("Esta ingresando la misma cantidad de mercancia en promedio a ambos paises");
+      }
+      System.out.println("");
+    }
+
+    public static void mostrarDatosDeUnaGandola(Gandola gandolasRegistradas[], int arrayBandera){
+      String matriculaABuscar, banderaString;
+      int bandera=0 ;
+      Scanner in = new Scanner(System.in);
+      
+      System.out.println("Desea ver los datos de una gandola en especifico?");
+      System.out.println("Ingrese 1 para ver los datos, presione cualquier otro numero para salir");
+      banderaString = in.nextLine();
+      bandera = Integer.parseInt(banderaString);
+      while(bandera == 1){  
+        System.out.println("Ingrese la matricula de la gandola que desea ver");
+        matriculaABuscar = in.nextLine();
+        for(int i = 0; i<arrayBandera; i++){
+          if(gandolasRegistradas[i].getMatricula().equalsIgnoreCase(matriculaABuscar)){
+            gandolasRegistradas[i].mostrarData();
+            break;
+          }
+          if(i==arrayBandera-1){
+            System.out.println("No se encontro la gandola con la matricula ingresada");
+          }
+        }
+
+        System.out.println("Ingrese 1 para continuar buscando gandolas, si desea salir, ingrese cualquier otro numero.");
+        banderaString = in.nextLine();
+        bandera = Integer.parseInt(banderaString);
+        if(bandera != 1){
+          break;
+        }
+      }
+      in.close();
     }
 
     public static void main(String[] args) {
 
-     
-      int bandera, arrayBandera, sumatoriaDePesoDeGandolasNacionales, cantidaDeGandolasNacionales, sumatoriaDePesoDeGandolasExtranjeras, cantidaDeGandolasExtranjeras, precioTotalDeLaMercanciaQueIngresa;
-      
+      int arrayBandera = 0;      
       // Al no concoer la cantidad que entrara al dia, se crea un array de 100 indices de manera predeterminada;
       int n= 100;
       
-      
       Gandola gandolasRegistradas[] = new Gandola[n];
 
-      
-
+      System.out.println("");
       System.out.println("Bienvenido al sistema de aduanas de San Antonio del Tachira");
       System.out.println("A continuacion se la va a pedir ingresar una serie de datos para registrar las gandolas que entran o salen del pais");
       System.out.println("Antes de empezar, unas indicaciones de como ingresar los datos:");
@@ -89,36 +173,14 @@ public class Main {
       System.out.println("Solo se aceptan los siguientes tipo de mercancia: Alimentos, Metales, Vehiculos, Varios");
       System.out.println("");
       System.out.println("----------------------------------------------------------------------------------------------------------------------");
-      System.out.println("");
 
-      // Carga de datos
+    arrayBandera = cargarDatos(gandolasRegistradas, n);
+     
+    mostrarDatosDeGandolasExtranjeras(gandolasRegistradas, arrayBandera);
+        
+    pesoPromedioDeLasGandolas(gandolasRegistradas, arrayBandera);  
 
-      
-  
-    //Mostrar solo los datos de las Gandolas
-    System.out.println("Matricula     Peso(Toneladas)     Tipo de mercancia");
-    for(int i = 0; i<arrayBandera; i++){
-      if(gandolasRegistradas[i].getOrigen().equalsIgnoreCase("E")){
-        System.out.println(gandolasRegistradas[i].getMatricula() + "     " + gandolasRegistradas[i].getPesoDeLaCarga() + "     " + gandolasRegistradas[i].getTipoDeMercancia());
-      }
-    }
-
-
-
-    // Peso promedio de las gandolas por pais
-    for(int i = 0; i<arrayBandera; i++){
-      if(gandolasRegistradas[i].getOrigen().equalsIgnoreCase("V")){
-        cantidaDeGandolasNacionales++;
-        sumatoriaDePesoDeGandolasNacionales += gandolasRegistradas[i].getPesoDeLaCarga();
-      }
-      else{
-        cantidaDeGandolasExtranjeras++;
-        sumatoriaDePesoDeGandolasExtranjeras += gandolasRegistradas[i].getPesoDeLaCarga();
-
-      }
-    }
-  
-
+    mostrarDatosDeUnaGandola(gandolasRegistradas, arrayBandera);
   }
 
 }

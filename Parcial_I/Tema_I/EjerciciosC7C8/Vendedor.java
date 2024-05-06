@@ -1,6 +1,6 @@
 package Parcial_I.Tema_I.EjerciciosC5C6;
 
-public class Vendedor {
+public abstract class Vendedor {
   private String nombre;
   private int id, cantidadAsignada, cantidadVendida;
 
