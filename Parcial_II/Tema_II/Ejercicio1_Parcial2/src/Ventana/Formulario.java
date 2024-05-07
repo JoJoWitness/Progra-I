@@ -20,13 +20,16 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 
+@SuppressWarnings("unused")
 public class Formulario extends JFrame{
      //private JFrame form1;
      private JLabel Pnombre;
      private JTextField nombre;
      private JLabel PfechaSalida;
+     @SuppressWarnings("rawtypes")
      private JComboBox dia,mes,anho;
      private JLabel Pdestino;
+     @SuppressWarnings("rawtypes")
      private JComboBox destino;
      private JLabel Pduracion;
      private JSpinner duracion_dias;
@@ -41,6 +44,7 @@ public class Formulario extends JFrame{
      private JLabel logo;
      private JTabbedPane pestanhas;
      private JTextField motivo;
+     @SuppressWarnings({ "rawtypes", "unchecked" })
      public Formulario(){
           /*
           form1 = new JFrame();

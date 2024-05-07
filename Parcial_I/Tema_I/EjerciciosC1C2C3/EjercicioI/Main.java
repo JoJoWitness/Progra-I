@@ -24,5 +24,7 @@ public class Main {
     System.out.println("The net salary of the worker is: " + worker[i].getNetSalary() +"bs. \n");
 
   }
+
+  entry.close();
   }
 }

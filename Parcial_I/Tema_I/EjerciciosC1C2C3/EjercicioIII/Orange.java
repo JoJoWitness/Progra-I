@@ -2,7 +2,9 @@ package Parcial_I.Tema_I.EjerciciosC1C2C3.EjercicioIII;
 
 public class Orange {
   private int id;
+  @SuppressWarnings("unused")
   private double diameter;
+  @SuppressWarnings("unused")
   private double weight;
   private String type;
 

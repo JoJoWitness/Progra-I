@@ -27,6 +27,8 @@ public static void main(String[] args) {
     phoneCall[i] = new Call(minutes);
     System.out.println("The price of that call is: " + phoneCall[i].getPrice() + "bs. \n");
   }
+
+  entry.close();
 }
 
 }

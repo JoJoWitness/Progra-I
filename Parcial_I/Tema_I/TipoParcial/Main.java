@@ -74,7 +74,7 @@ public class Main {
         }
     }  
   
-      
+    entrada.close();
       return arrayBandera;
     }
 
@@ -181,6 +181,8 @@ public class Main {
     pesoPromedioDeLasGandolas(gandolasRegistradas, arrayBandera);  
 
     mostrarDatosDeUnaGandola(gandolasRegistradas, arrayBandera);
+
+    
   }
 
 }

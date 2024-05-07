@@ -1,6 +1,6 @@
-package Parcial_II.Tema_II.Ejercicios.Main;
+package Parcial_II.Tema_II.Ejercicios1_TabbedPane.Main;
 
-import Parcial_II.Tema_II.Ejercicios.Window.Window;
+import Parcial_II.Tema_II.Ejercicios1_TabbedPane.Window.Window;
 
 public class Main {
 

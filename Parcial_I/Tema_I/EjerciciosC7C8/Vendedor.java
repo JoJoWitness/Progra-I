@@ -1,4 +1,4 @@
-package Parcial_I.Tema_I.EjerciciosC5C6;
+package Parcial_I.Tema_I.EjerciciosC7C8;
 
 public abstract class Vendedor {
   private String nombre;

@@ -1,4 +1,4 @@
-package Parcial_II.Tema_II.Ejercicios.Window;
+package Parcial_II.Tema_II.Ejercicios1_PorMi.Window;
 
 import java.awt.*;
 import javax.swing.*;
