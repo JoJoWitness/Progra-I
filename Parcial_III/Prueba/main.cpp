@@ -57,7 +57,7 @@ class Gandola: public Vehiculo{
         peso = nuevo_peso;
     }
     
-    void get_datos();
+   
 };
 
 class GandolaColombiana: public Gandola{
