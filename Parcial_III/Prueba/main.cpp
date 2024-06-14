@@ -131,7 +131,7 @@ void GandolaVenezolana::get_datos(){
   cout << matricula << "     " << peso << "     " << tipo_de_mercancia << "     " << responsable << endl;
 }
 
-void cargarDatos(Gandola vectorDeGandolas, int cantidad_de_gandolas){
+void cargarDatos(Gandola* vectorDeGandolas[], int cantidad_de_gandolas){
 	int i;
  
 	string gandola_origen, gandola_matricula, gandola_mercancia, gandola_poliza, gandola_direccion, gandola_responsable;
@@ -172,12 +172,12 @@ void cargarDatos(Gandola vectorDeGandolas, int cantidad_de_gandolas){
       cout << "Ingrese la direccion: ";
       cin >> gandola_precio;
   
-      vectorDeGandolas[i] = GandolaColombiana(gandola_matricula, gandola_matricula, gandola_origen, gandola_precio, gandola_peso, gandola_poliza, gandola_direccion);
+      vectorDeGandolas[i] = new GandolaColombiana(gandola_matricula, gandola_matricula, gandola_origen, gandola_precio, gandola_peso, gandola_poliza, gandola_direccion);
     }
     else{
       cout << "Ingrese nombre del responsable: " ;
       cin >> gandola_responsable;
-      vectorDeGandolas[i] = GandolaVenezolana(gandola_matricula, gandola_matricula, gandola_origen, gandola_precio, gandola_peso, gandola_responsable);  
+      vectorDeGandolas[i] = new GandolaVenezolana(gandola_matricula, gandola_matricula, gandola_origen, gandola_precio, gandola_peso, gandola_responsable);  
     }
     }
 }
@@ -303,7 +303,7 @@ int main(){
 
        for(i = 0; i < cantidad_de_gandolas ; i++){
           if(gandola_matricula == vectorDeGandolas[i]->get_matricula()){
-            vectorDeGandolas[i]->get_datos()
+            vectorDeGandolas[i]->get_datos();
             gandola_encontrada = true;
             break;
           }
